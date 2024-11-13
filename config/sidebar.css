@@ -1,0 +1,89 @@
+/* Sidebar */
+.sidebar {
+    background: linear-gradient(145deg, #5a5bff, #4c6ef5);  /* Gradasi biru */
+    padding-top: 20px;
+}
+
+/* Sidebar Links */
+.nav-link {
+    color: #fff;
+    font-weight: 500;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Animasi untuk tombol Beranda */
+.beranda-link {
+    display: flex;
+    align-items: center;
+    padding: 12px 20px;
+    text-decoration: none;
+    color: #ffffff;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    border-radius: 5px;
+}
+
+/* Efek hover pada tombol Beranda */
+.beranda-link:hover {
+    transform: scale(1.1);  /* Membuat tombol sedikit membesar saat di-hover */
+    background-color: rgba(255, 255, 255, 0.1);  /* Ubah latar belakang saat di-hover */
+    color: #f8f9fa;  /* Warna teks menjadi lebih terang saat di-hover */
+}
+
+/* Efek saat tombol Beranda aktif */
+.nav-item.active .beranda-link {
+    background-color: rgba(255, 255, 255, 0.2);
+    color: #f8f9fa;  /* Menonjolkan warna teks saat item aktif */
+    font-weight: 600;  /* Menebalkan font untuk tampilan aktif */
+    border-radius: 5px;
+}
+
+/* Animasi ikon saat di-hover */
+.icon-animated {
+    transition: transform 0.3s ease, color 0.3s ease;
+}
+
+/* Efek ikon saat di-hover */
+.beranda-link:hover .icon-animated {
+    transform: scale(1.2);  /* Membuat ikon sedikit membesar saat di-hover */
+    color: #f8f9fa;  /* Membuat ikon berwarna putih saat di-hover */
+}
+
+/* Sidebar Toggler */
+#sidebarToggle {
+    background-color: #fff;
+    color: #5a5bff;
+    border: none;
+    padding: 10px;
+    transition: transform 0.3s ease;
+}
+
+/* Efek hover pada Sidebar Toggler */
+#sidebarToggle:hover {
+    background-color: #5a5bff;
+    color: #fff;
+    transform: rotate(90deg);  /* Memberikan animasi rotasi saat di-hover */
+}
+
+/* Animasi Hover untuk semua item sidebar */
+.nav-link:hover {
+    background-color: rgba(255, 255, 255, 0.1);  /* Mengubah latar belakang saat hover */
+    color: #f8f9fa;  /* Mengubah warna teks saat hover */
+    border-radius: 5px;
+}
+
+/* Efek hover pada collapsible menu */
+.nav-link.collapsed:hover {
+    background-color: rgba(255, 255, 255, 0.15);
+}
+
+/* Divider */
+.sidebar-divider {
+    border-color: rgba(255, 255, 255, 0.2);  /* Pembatas dengan warna transparan */
+}
+
+.sidebar-heading {
+    color: #fff;
+    font-weight: 600;
+    margin-top: 20px;
+}
