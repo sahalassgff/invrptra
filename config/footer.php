@@ -45,7 +45,7 @@
         color: #444;
     }
     .modal-content {
-        animation: fadeIn 0.4s ease-in-out;
+        animation: fadeIn 1s ease-in-out;
     }
     @keyframes fadeIn {
         from { opacity: 0; transform: translateY(-20px); }

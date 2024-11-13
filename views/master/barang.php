@@ -32,13 +32,15 @@ function submit(x) {
     }
 }
 </script>
+
 <!-- Begin Page Content -->
-<div class="container-fluid">
+<div class="container-fluid" id="barang-page">
 
     <!-- Page Heading -->
     <div class="d-sm-flex align-items-center justify-content-between mb-4">
         <h1 class="h3 mb-0 text-gray-800">Barang</h1>
     </div>
+
     <!-- DataTales Example -->
     <div class="card shadow mb-4">
         <div class="card-header py-3">
@@ -51,7 +53,7 @@ function submit(x) {
             </a>
         </div>
         <div class="card-body">
-            <div class="table-responsive">
+            <div class="table-responsive" id="barang-table">
                 <table class="table table-bordered table-hover" id="dataTable" width="100%" cellspacing="0">
                     <thead>
                         <tr>
@@ -80,7 +82,7 @@ function submit(x) {
                             <td>
                                 <a href="#barangModal" data-toggle="modal" onclick="submit(<?=$row['idbarang'];?>)"
                                     class="btn btn-sm btn-circle btn-info"><i class="fas fa-edit"></i></a>
-                                <a style="text-align: center;" href="<?=base_url();?>/process/barang.php?act=<?=encrypt('delete');?>&id=<?=encrypt($row['idbarang']);?>"
+                                <a href="<?=base_url();?>/process/barang.php?act=<?=encrypt('delete');?>&id=<?=encrypt($row['idbarang']);?>"
                                     class="btn btn-sm btn-circle btn-danger btn-hapus"><i class="fas fa-trash"></i></a>
                             </td>
                         </tr>
@@ -155,3 +157,39 @@ function submit(x) {
         </div>
     </div>
 </div>
+
+<!-- Tambahkan CSS untuk Efek Fade-In -->
+<style>
+    /* Animasi Fade-In */
+    #barang-page {
+        animation: fadeIn 1.5s ease-in-out;
+    }
+    #barang-table {
+        animation: fadeIn 1.5s ease-in-out;
+    }
+    .modal-content {
+        animation: fadeIn 0.5s ease-in-out;
+    }
+
+    @keyframes fadeIn {
+        from {
+            opacity: 0;
+            transform: translateY(-20px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+</style>
+
+<!-- Pastikan untuk menambahkan JS untuk Inisialisasi Tabel -->
+<script>
+    $(document).ready(function() {
+        $('#dataTable').DataTable({
+            "ordering": false,
+            "paging": true,
+            "info": false
+        });
+    });
+</script>

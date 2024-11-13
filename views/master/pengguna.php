@@ -1,11 +1,10 @@
-<?php hakAkses(['admin']) ?>
+<?php hakAkses(['admin']); ?>
 <script>
 function submit(x) {
     if (x == 'add') {
         $('[name="username"]').val("");
         $('[name="nama"]').val("");
         $('[name="no_hp"]').val("");
-        // $('[name="level"]').val("");
         $('#penggunaModal .modal-title').html('Tambah Pengguna');
         $('[name="username"]').prop('readonly', false);
         $('[name="password"]').prop('required', true);
@@ -32,14 +31,13 @@ function submit(x) {
                 $('[name="username"]').val(data.username);
                 $('[name="nama"]').val(data.nama);
                 $('[name="no_hp"]').val(data.no_hp);
-                // $('[name="level"]').val(data.level);
             }
         });
     }
 }
 </script>
 <!-- Begin Page Content -->
-<div class="container-fluid">
+<div class="container-fluid" id="pengguna-page">
 
     <!-- Page Heading -->
     <div class="d-sm-flex align-items-center justify-content-between mb-4">
@@ -57,7 +55,7 @@ function submit(x) {
             </a>
         </div>
         <div class="card-body">
-            <div class="table-responsive">
+            <div class="table-responsive" id="pengguna-table">
                 <table class="table table-bordered table-hover" id="dataTable" width="100%" cellspacing="0">
                     <thead>
                         <tr>
@@ -65,7 +63,6 @@ function submit(x) {
                             <th>NAMA LENGKAP</th>
                             <th>TELP</th>
                             <th>USERNAME</th>
-                            <!-- <th>LEVEL</th> -->
                             <th width="50">AKSI</th>
                         </tr>
                     </thead>
@@ -139,15 +136,6 @@ function submit(x) {
                                     jika tidak ingin merubah password</small>
                             </div>
                         </div>
-                        <!-- <div class="col-md-6">
-                            <div class="form-group">
-                                <label>Level Akses</label>
-                                <select name="level" class="form-control" required>
-                                    <option value="user">Staff Pegawai</option>
-                                    <option value="admin">Administrator</option>
-                                </select>
-                            </div>
-                        </div> -->
                     </div>
                     <hr class="sidebar-divider">
                     <button class="btn btn-secondary" type="button" data-dismiss="modal"><i class="fas fa-times"></i>
@@ -161,3 +149,39 @@ function submit(x) {
         </div>
     </div>
 </div>
+
+<!-- Tambahkan CSS untuk Efek Fade-In -->
+<style>
+    /* Animasi Fade-In */
+    #pengguna-page {
+        animation: fadeIn 1.5s ease-in-out;
+    }
+    #pengguna-table {
+        animation: fadeIn 1.5s ease-in-out;
+    }
+    .modal-content {
+        animation: fadeIn 0.5s ease-in-out;
+    }
+
+    @keyframes fadeIn {
+        from {
+            opacity: 0;
+            transform: translateY(-20px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+</style>
+
+<!-- Pastikan untuk menambahkan JS untuk Inisialisasi Tabel -->
+<script>
+    $(document).ready(function() {
+        $('#dataTable').DataTable({
+            "ordering": false,
+            "paging": true,
+            "info": false
+        });
+    });
+</script>

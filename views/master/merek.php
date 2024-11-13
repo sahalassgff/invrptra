@@ -1,11 +1,12 @@
-<?php hakAkses(['admin']) ?>
+<?php hakAkses(['admin']); ?>
 <!-- Begin Page Content -->
-<div class="container-fluid">
+<div class="container-fluid" id="merek-page">
 
     <!-- Page Heading -->
     <div class="d-sm-flex align-items-center justify-content-between mb-4">
         <h1 class="h3 mb-0 text-gray-800">Merek</h1>
     </div>
+
     <!-- DataTales Example -->
     <div class="card shadow mb-4">
         <div class="card-header py-3">
@@ -17,7 +18,7 @@
             </a>
         </div>
         <div class="card-body">
-            <div class="table-responsive">
+            <div class="table-responsive" id="merek-table">
                 <table class="table table-bordered table-hover" id="dataTable" width="100%" cellspacing="0">
                     <thead>
                         <tr>
@@ -90,3 +91,39 @@
         </div>
     </div>
 </div>
+
+<!-- Tambahkan CSS untuk Efek Fade-In -->
+<style>
+    /* Animasi Fade-In */
+    #merek-page {
+        animation: fadeIn 1.5s ease-in-out;
+    }
+    #merek-table {
+        animation: fadeIn 1.5s ease-in-out;
+    }
+    .modal-content {
+        animation: fadeIn 0.5s ease-in-out;
+    }
+
+    @keyframes fadeIn {
+        from {
+            opacity: 0;
+            transform: translateY(-20px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+</style>
+
+<!-- Pastikan untuk menambahkan JS untuk Inisialisasi Tabel -->
+<script>
+    $(document).ready(function() {
+        $('#dataTable').DataTable({
+            "ordering": false,
+            "paging": true,
+            "info": false
+        });
+    });
+</script>

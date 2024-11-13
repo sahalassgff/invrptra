@@ -1,12 +1,13 @@
 <?php hakAkses(['admin']); ?>
-<!-- Begin Page Content -->
-<div class="container-fluid">
+<!-- Mulai Konten Halaman -->
+<div class="container-fluid" id="laporan-page">
 
-    <!-- Page Heading -->
+    <!-- Judul Halaman -->
     <div class="d-sm-flex align-items-center justify-content-between mb-4">
         <h1 class="h3 mb-0 text-gray-800">Laporan Barang Keluar</h1>
     </div>
-    <!-- DataTales Example -->
+
+    <!-- Formulir Filter Tanggal -->
     <div class="card shadow mb-4">
         <div class="card-body">
             <form action="<?=base_url();?>process/lap_barang_keluar.php" method="post" target="_blank">
@@ -32,6 +33,10 @@
                 </div>
             </form>
         </div>
+    </div>
+
+    <!-- Tabel Barang Keluar -->
+    <div class="card shadow mb-4" id="barang-keluar">
         <div class="card-body">
             <div class="table-responsive">
                 <table class="table table-bordered table-hover" id="dataTable" width="100%" cellspacing="0">
@@ -70,3 +75,36 @@
 
 </div>
 <!-- /.container-fluid -->
+
+<!-- Tambahkan CSS untuk Efek Fade-In -->
+<style>
+    /* Animasi Fade-In */
+    #laporan-page {
+        animation: fadeIn 1.5s ease-in-out;
+    }
+    #barang-keluar {
+        animation: fadeIn 1.5s ease-in-out;
+    }
+
+    @keyframes fadeIn {
+        from {
+            opacity: 0;
+            transform: translateY(-20px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+</style>
+
+<!-- Pastikan untuk menambahkan JS untuk Inisialisasi Tabel -->
+<script>
+    $(document).ready(function() {
+        $('#dataTable').DataTable({
+            "ordering": false,
+            "paging": true,
+            "info": false
+        });
+    });
+</script>

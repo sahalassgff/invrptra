@@ -1,14 +1,14 @@
 <?php hakAkses(['admin']); $now = date('Y-m-d'); ?>
-<!-- Begin Page Content -->
-<div class="container-fluid">
+<!-- Mulai Konten Halaman -->
+<div class="container-fluid" id="home-page">
 
-    <!-- Page Heading -->
+    <!-- Judul Halaman -->
     <div class="d-sm-flex align-items-center justify-content-between mb-4">
         <h1 class="h3 mb-0 text-gray-800">Beranda </h1>
     </div>
 
-    <!-- DataTales Example -->
-    <div class="card shadow mb-4">
+    <!-- Contoh DataTales untuk Barang Masuk Hari Ini -->
+    <div class="card shadow mb-4" id="barang-masuk">
         <div class="card-header py-3">
             <h4 class="float-left">Barang Masuk Hari Ini</h4>
             <a href="<?=base_url();?>process/cetak_barang_masuk_today.php" target="_blank"
@@ -55,8 +55,8 @@
         </div>
     </div>
 
-    <!-- DataTales Example -->
-    <div class="card shadow mb-4">
+    <!-- Contoh DataTales untuk Barang Keluar Hari Ini -->
+    <div class="card shadow mb-4" id="barang-keluar">
         <div class="card-header py-3">
             <h4 class="float-left">Barang Keluar Hari Ini</h4>
             <a href="<?=base_url();?>process/cetak_barang_keluar_today.php" target="_blank"
@@ -104,3 +104,36 @@
     </div>
 </div>
 <!-- /.container-fluid -->
+
+<!-- Tambahkan CSS untuk Efek Fade-In -->
+<style>
+    /* Animasi Fade-In */
+    #home-page {
+        animation: fadeIn 1.5s ease-in-out;
+    }
+    #barang-masuk, #barang-keluar {
+        animation: fadeIn 1.5s ease-in-out;
+    }
+
+    @keyframes fadeIn {
+        from {
+            opacity: 0;
+            transform: translateY(-20px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+</style>
+
+<!-- Pastikan untuk menambahkan JS untuk Inisialisasi Tabel -->
+<script>
+    $(document).ready(function() {
+        $('#dataTable').DataTable({
+            "ordering": false,
+            "paging": true,
+            "info": false
+        });
+    });
+</script>

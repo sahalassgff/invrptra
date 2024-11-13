@@ -1,12 +1,13 @@
 <?php hakAkses(['admin']); ?>
-<!-- Begin Page Content -->
-<div class="container-fluid">
+<!-- Mulai Konten Halaman -->
+<div class="container-fluid" id="barang-keluar-page">
 
-    <!-- Page Heading -->
+    <!-- Judul Halaman -->
     <div class="d-sm-flex align-items-center justify-content-between mb-4">
         <h1 class="h3 mb-0 text-gray-800">Barang Keluar</h1>
     </div>
-    <!-- DataTales Example -->
+
+    <!-- Tombol Tambah dan Cetak -->
     <div class="card shadow mb-4">
         <div class="card-header py-3">
             <a href="#" class="btn btn-primary btn-icon-split btn-sm" data-toggle="modal" data-target="#barang_keluar">
@@ -24,7 +25,7 @@
             </a>
         </div>
         <div class="card-body">
-            <div class="table-responsive">
+            <div class="table-responsive" id="barang-keluar-table">
                 <table class="table table-bordered table-hover" id="dataTable" width="100%" cellspacing="0">
                     <thead>
                         <tr>
@@ -62,7 +63,7 @@
 </div>
 <!-- /.container-fluid -->
 
-<!-- Modal Tambah barang -->
+<!-- Modal Tambah Barang -->
 <div class="modal fade" id="barang_keluar" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
     aria-hidden="true" data-backdrop="static">
     <div class="modal-dialog modal-lg" role="document">
@@ -117,3 +118,39 @@
         </div>
     </div>
 </div>
+
+<!-- Tambahkan CSS untuk Efek Fade-In -->
+<style>
+    /* Animasi Fade-In */
+    #barang-keluar-page {
+        animation: fadeIn 1.5s ease-in-out;
+    }
+    #barang-keluar-table {
+        animation: fadeIn 1.5s ease-in-out;
+    }
+    .modal-content {
+        animation: fadeIn 0.5s ease-in-out;
+    }
+
+    @keyframes fadeIn {
+        from {
+            opacity: 0;
+            transform: translateY(-20px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+</style>
+
+<!-- Pastikan untuk menambahkan JS untuk Inisialisasi Tabel -->
+<script>
+    $(document).ready(function() {
+        $('#dataTable').DataTable({
+            "ordering": false,
+            "paging": true,
+            "info": false
+        });
+    });
+</script>

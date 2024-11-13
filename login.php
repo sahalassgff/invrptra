@@ -20,7 +20,10 @@ if(isset($_POST['cek_login'])){
                 $_SESSION['username'] = $data['username'];
                 $_SESSION['fullname'] = $data['nama'];
                 $_SESSION['level'] = $data['level'];
-                header("Location:".$base_url);
+
+                // Add a redirect with animation
+                $_SESSION['login_success'] = true; // Set session for redirect
+                header("Location: ".$base_url); // Redirect to home after successful login
             }else{
                 $error = 'Password anda salah';
             }
@@ -31,6 +34,7 @@ if(isset($_POST['cek_login'])){
     $_SESSION['error'] = $error;
 }
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -70,11 +74,7 @@ if(isset($_POST['cek_login'])){
             width: 100%;
             box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
             transition: transform 0.3s ease, box-shadow 0.3s ease;
-            animation: fadeIn 1.5s ease;
-        }
-        .card:hover {
-            transform: scale(1.02);
-            box-shadow: 0 6px 30px rgba(0, 0, 0, 0.25);
+            animation: fadeIn 2.5s ease;
         }
 
         /* Text styling */
@@ -101,13 +101,10 @@ if(isset($_POST['cek_login'])){
             border-radius: 8px;
             padding: 12px 18px;
             font-size: 15px;
-            transition: box-shadow 0.3s ease;
+            transition: box-shadow 1s ease;
         }
         .form-control-user:focus {
             box-shadow: 0 0 8px #4facfe;
-        }
-        .form-control-user::placeholder {
-            color: #999;
         }
 
         /* Button styling */
@@ -118,7 +115,7 @@ if(isset($_POST['cek_login'])){
             border-radius: 8px;
             font-size: 16px;
             font-weight: 600;
-            transition: 0.3s ease;
+            transition: 1s ease;
         }
 
         .btn-primary:hover {
@@ -146,12 +143,26 @@ if(isset($_POST['cek_login'])){
             text-align: center;
             margin-bottom: 15px;
         }
+
+        /* Animation for fade-out effect */
+        .fade-out {
+            animation: fadeOut 1.5s forwards;
+        }
+
+        @keyframes fadeOut {
+            from {
+                opacity: 1;
+            }
+            to {
+                opacity: 0;
+            }
+        }
     </style>
 </head>
 
 <body>
 
-    <div class="card">
+    <div class="card" id="login-card">
         <h1>Selamat Datang</h1>
         <p>Inventaris RPTRA Cibubur Berseri</p>
 
@@ -162,12 +173,12 @@ if(isset($_POST['cek_login'])){
         <?php endif; ?>
 
         <!-- Login form -->
-        <form method="post" action="">
+        <form method="post" action="" onsubmit="handleLogin()">
             <div class="form-group">
-                <input type="text" name="username" class="form-control form-control-user" placeholder="Username">
+                <input type="text" name="username" class="form-control form-control-user" placeholder="Username" required>
             </div>
             <div class="form-group">
-                <input type="password" name="password" class="form-control form-control-user" placeholder="Password">
+                <input type="password" name="password" class="form-control form-control-user" placeholder="Password" required>
             </div>
             <button type="submit" class="btn btn-primary btn-block" name="cek_login">Login</button>
         </form>
@@ -179,6 +190,18 @@ if(isset($_POST['cek_login'])){
 
     <!-- Core plugin JavaScript-->
     <script src="<?=$base_url;?>assets/vendor/jquery-easing/jquery.easing.min.js"></script>
+
+    <script>
+        function handleLogin() {
+            // Apply fade-out animation before redirection
+            const loginCard = document.getElementById('login-card');
+            loginCard.classList.add('fade-out');
+            setTimeout(() => {
+                // Once fade-out is complete, redirect the user
+                window.location.href = '<?=$base_url;?>'; // Adjust the URL to your landing page
+            }, 1500); // Match the timeout with animation duration
+        }
+    </script>
 </body>
 
 </html>
