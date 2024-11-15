@@ -24,7 +24,8 @@ if (isset($_POST['cek_login'])) {
         if (empty($username) || empty($password)) {
             $error = 'Harap isi username dan password';
         } else {
-            $user = mysqli_query($con, "SELECT * FROM users WHERE username='$username'") or die(mysqli_error($con));
+            // Menggunakan BINARY untuk membuat pengecekan username bersifat case-sensitive
+            $user = mysqli_query($con, "SELECT * FROM users WHERE BINARY username='$username'") or die(mysqli_error($con));
             if (mysqli_num_rows($user) != 0) {
                 $data = mysqli_fetch_array($user);
                 if (password_verify($password, $data['password'])) {

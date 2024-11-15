@@ -188,19 +188,19 @@ if (isset($_POST['cek_login'])) {
         <?php endif; ?>
 
         <!-- Login form -->
-        <form class="user" method="post" action="">
-                                        <div class="form-group">
-                                            <input type="text" name="username" class="form-control form-control-user"
-                                                placeholder="Masukkan username">
-                                        </div>
-                                        <div class="form-group">
-                                            <input type="password" name="password"
-                                                class="form-control form-control-user" placeholder="Masukkan password">
-                                        </div>
-                                        <hr>
-                                        <button type="submit" class="btn btn-primary btn-user btn-block"
-                                            name="cek_login">Login</button>
-                                    </form>
+        <form method="post" action="" onsubmit="handleLogin()">
+            <div class="form-group">
+                <input type="text" name="username" class="form-control form-control-user" placeholder="Username" required>
+            </div>
+            <div class="form-group">
+                <input type="password" name="password" class="form-control form-control-user" placeholder="Password" required>
+            </div>
+
+            <!-- Google reCAPTCHA Widget -->
+            <input type="hidden" name="recaptcha_response" id="recaptchaResponse">
+
+            <button type="submit" class="btn btn-primary btn-block" name="cek_login">Login</button>
+        </form>
     </div>
 
     <!-- Google reCAPTCHA Script -->
