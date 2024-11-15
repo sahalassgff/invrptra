@@ -2,8 +2,6 @@
 session_start();
 include('config/conn.php');
 
-// Google reCAPTCHA Secret Key
-$secret_key = '6Lf6nX8qAAAAAH3o32LAypMsfZoAq1zF-If-lxJt'; // Ganti dengan secret key Anda
 $base_url = ((isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] == "on") ? "https" : "http");
 $base_url .= "://" . $_SERVER['HTTP_HOST'];
 $base_url .= str_replace(basename($_SERVER['SCRIPT_NAME']), "", $_SERVER['SCRIPT_NAME']);
@@ -11,37 +9,26 @@ $base_url .= str_replace(basename($_SERVER['SCRIPT_NAME']), "", $_SERVER['SCRIPT
 if (isset($_POST['cek_login'])) {
     $username = $_POST['username'];
     $password = $_POST['password'];
-    $captcha_response = $_POST['g-recaptcha-response'];
 
-    // Verifikasi reCAPTCHA di server
-    $captcha_verify_url = "https://www.google.com/recaptcha/api/siteverify";
-    $response = file_get_contents($captcha_verify_url . "?secret=" . $secret_key . "&response=" . $captcha_response);
-    $response_keys = json_decode($response, true);
-
-    if (empty($captcha_response) || !$response_keys['success']) {
-        $error = 'Harap verifikasi bahwa Anda bukan robot!';
+    if (empty($username) && empty($password)) {
+        $error = 'Harap isi username dan password';
     } else {
-        if (empty($username) || empty($password)) {
-            $error = 'Harap isi username dan password';
-        } else {
-            $user = mysqli_query($con, "SELECT * FROM users WHERE username='$username'") or die(mysqli_error($con));
-            if (mysqli_num_rows($user) != 0) {
-                $data = mysqli_fetch_array($user);
-                if (password_verify($password, $data['password'])) {
-                    $_SESSION['iduser'] = $data['id_users'];
-                    $_SESSION['username'] = $data['username'];
-                    $_SESSION['fullname'] = $data['nama'];
-                    $_SESSION['level'] = $data['level'];
+        $user = mysqli_query($con, "SELECT * FROM users WHERE username='$username'") or die(mysqli_error($con));
+        if (mysqli_num_rows($user) != 0) {
+            $data = mysqli_fetch_array($user);
+            if (password_verify($password, $data['password'])) {
+                $_SESSION['iduser'] = $data['id_users'];
+                $_SESSION['username'] = $data['username'];
+                $_SESSION['fullname'] = $data['nama'];
+                $_SESSION['level'] = $data['level'];
 
-                    $_SESSION['login_success'] = true;
-                    header("Location: " . $base_url);
-                    exit();
-                } else {
-                    $error = 'Password Anda salah';
-                }
+                $_SESSION['login_success'] = true;
+                header("Location: " . $base_url);
             } else {
-                $error = 'Username tidak terdaftar';
+                $error = 'Password anda salah';
             }
+        } else {
+            $error = 'Username tidak terdaftar';
         }
     }
     $_SESSION['error'] = $error;
@@ -50,6 +37,7 @@ if (isset($_POST['cek_login'])) {
 
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -62,9 +50,6 @@ if (isset($_POST['cek_login'])) {
 
     <!-- Custom styles for this template-->
     <link href="<?=$base_url;?>assets/css/sb-admin-2.min.css" rel="stylesheet">
-
-    <!-- Google reCAPTCHA -->
-    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
 
     <style>
         /* Background gradient */
@@ -159,6 +144,10 @@ if (isset($_POST['cek_login'])) {
             margin-bottom: 15px;
         }
     </style>
+
+<title>reCAPTCHA demo: Simple page</title>
+    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+
 </head>
 
 <body>
@@ -181,15 +170,16 @@ if (isset($_POST['cek_login'])) {
             <div class="form-group">
                 <input type="password" name="password" class="form-control form-control-user" placeholder="Password" required>
             </div>
-            <div class="form-group">
-                <div class="g-recaptcha" data-sitekey="6Lf6nX8qAAAAAAlOXadIe5Fa7_RKYzspwVaqqSfJ"></div>
-            </div>
             <button type="submit" class="btn btn-primary btn-block" name="cek_login">Login</button>
         </form>
     </div>
 
+
     <!-- Bootstrap core JavaScript-->
     <script src="<?=$base_url;?>assets/vendor/jquery/jquery.min.js"></script>
     <script src="<?=$base_url;?>assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Core plugin JavaScript-->
+    <script src="<?=$base_url;?>assets/vendor/jquery-easing/jquery.easing.min.js"></script>
 </body>
 </html>

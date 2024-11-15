@@ -89,4 +89,7 @@ function base_url(){
     $base_url.= str_replace(basename($_SERVER['SCRIPT_NAME']),"",$_SERVER['SCRIPT_NAME']);
     return $base_url;
 }
+
+
+
 ?>

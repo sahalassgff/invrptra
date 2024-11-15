@@ -2,8 +2,9 @@
 session_start();
 include('config/conn.php');
 
+
 // Google reCAPTCHA Secret Key
-$secret_key = '6Lf6nX8qAAAAAH3o32LAypMsfZoAq1zF-If-lxJt'; // Ganti dengan secret key Anda
+$secret_key = '6LdtXH4qAAAAAFv5nNM_asFuqZ6r3hu52AWC6rpa'; // Ganti dengan Secret Key Anda
 $base_url = ((isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] == "on") ? "https" : "http");
 $base_url .= "://" . $_SERVER['HTTP_HOST'];
 $base_url .= str_replace(basename($_SERVER['SCRIPT_NAME']), "", $_SERVER['SCRIPT_NAME']);
@@ -11,17 +12,17 @@ $base_url .= str_replace(basename($_SERVER['SCRIPT_NAME']), "", $_SERVER['SCRIPT
 if (isset($_POST['cek_login'])) {
     $username = $_POST['username'];
     $password = $_POST['password'];
-    $captcha_response = $_POST['g-recaptcha-response'];
+    // $captcha_response = $_POST['g-recaptcha-response']; // Tangkap response CAPTCHA
 
-    // Verifikasi reCAPTCHA di server
-    $captcha_verify_url = "https://www.google.com/recaptcha/api/siteverify";
-    $response = file_get_contents($captcha_verify_url . "?secret=" . $secret_key . "&response=" . $captcha_response);
-    $response_keys = json_decode($response, true);
+    // Verifikasi CAPTCHA
+    // $captcha_verify_url = "https://www.google.com/recaptcha/api/siteverify";
+    // $response = file_get_contents($captcha_verify_url . "?secret=" . $secret_key . "&response=" . $captcha_response);
+    // $response_keys = json_decode($response, true);
 
     if (empty($captcha_response) || !$response_keys['success']) {
-        $error = 'Harap verifikasi bahwa Anda bukan robot!';
+        $error = 'Please verify that you are not a robot!';
     } else {
-        if (empty($username) || empty($password)) {
+        if (empty($username) && empty($password)) {
             $error = 'Harap isi username dan password';
         } else {
             $user = mysqli_query($con, "SELECT * FROM users WHERE username='$username'") or die(mysqli_error($con));
@@ -33,23 +34,24 @@ if (isset($_POST['cek_login'])) {
                     $_SESSION['fullname'] = $data['nama'];
                     $_SESSION['level'] = $data['level'];
 
+                    // Redirect after successful login
                     $_SESSION['login_success'] = true;
                     header("Location: " . $base_url);
-                    exit();
                 } else {
-                    $error = 'Password Anda salah';
+                    $error = 'Password anda salah';
                 }
             } else {
                 $error = 'Username tidak terdaftar';
             }
         }
+        $_SESSION['error'] = $error;
     }
-    $_SESSION['error'] = $error;
 }
 ?>
 
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -62,10 +64,8 @@ if (isset($_POST['cek_login'])) {
 
     <!-- Custom styles for this template-->
     <link href="<?=$base_url;?>assets/css/sb-admin-2.min.css" rel="stylesheet">
-
-    <!-- Google reCAPTCHA -->
-    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
-
+    
+  <!-- <script src="https://www.google.com/recaptcha/enterprise.js?render=6LdtXH4qAAAAAOshzSCMkXEn8tWI0J9NHekUXMUb"></script> -->
     <style>
         /* Background gradient */
         body {
@@ -158,6 +158,20 @@ if (isset($_POST['cek_login'])) {
             text-align: center;
             margin-bottom: 15px;
         }
+
+        /* Animation for fade-out effect */
+        .fade-out {
+            animation: fadeOut 1.5s forwards;
+        }
+
+        @keyframes fadeOut {
+            from {
+                opacity: 1;
+            }
+            to {
+                opacity: 0;
+            }
+        }
     </style>
 </head>
 
@@ -174,22 +188,69 @@ if (isset($_POST['cek_login'])) {
         <?php endif; ?>
 
         <!-- Login form -->
-        <form method="post" action="">
-            <div class="form-group">
-                <input type="text" name="username" class="form-control form-control-user" placeholder="Username" required>
-            </div>
-            <div class="form-group">
-                <input type="password" name="password" class="form-control form-control-user" placeholder="Password" required>
-            </div>
-            <div class="form-group">
-                <div class="g-recaptcha" data-sitekey="6Lf6nX8qAAAAAAlOXadIe5Fa7_RKYzspwVaqqSfJ"></div>
-            </div>
-            <button type="submit" class="btn btn-primary btn-block" name="cek_login">Login</button>
-        </form>
+        <form class="user" method="post" action="">
+                                        <div class="form-group">
+                                            <input type="text" name="username" class="form-control form-control-user"
+                                                placeholder="Masukkan username">
+                                        </div>
+                                        <div class="form-group">
+                                            <input type="password" name="password"
+                                                class="form-control form-control-user" placeholder="Masukkan password">
+                                        </div>
+                                        <hr>
+                                        <button type="submit" class="btn btn-primary btn-user btn-block"
+                                            name="cek_login">Login</button>
+                                    </form>
     </div>
+
+    <!-- Google reCAPTCHA Script -->
+    <!-- <script>
+  function onClick(e) {
+    e.preventDefault();
+    grecaptcha.enterprise.ready(async () => {
+      const token = await grecaptcha.enterprise.execute('6LdtXH4qAAAAAOshzSCMkXEn8tWI0J9NHekUXMUb', {action: 'LOGIN'});
+    });
+  }
+</script> -->
+    <!-- 
+    <script>
+    function onClick(e) {
+        e.preventDefault();
+        grecaptcha.enterprise.ready(async () => {
+        const token = await grecaptcha.enterprise.execute('6LdtXH4qAAAAAOshzSCMkXEn8tWI0J9NHekUXMUb', {action: 'LOGIN'});
+        });
+    }
+    </script> -->
+
+
 
     <!-- Bootstrap core JavaScript-->
     <script src="<?=$base_url;?>assets/vendor/jquery/jquery.min.js"></script>
     <script src="<?=$base_url;?>assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Core plugin JavaScript-->
+    <script src="<?=$base_url;?>assets/vendor/jquery-easing/jquery.easing.min.js"></script>
+
+    <!-- <script>
+        function handleLogin() {
+            // Apply fade-out animation before redirection
+            const loginCard = document.getElementById('login-card');
+            loginCard.classList.add('fade-out');
+            setTimeout(() => {
+                // Once fade-out is complete, redirect the user
+                window.location.href = '<?=$base_url;?>'; // Adjust the URL to your landing page
+            }, 1500); // Match the timeout with animation duration
+        }
+    </script> -->
+    <!-- <script>
+        function onClick(e) {
+            e.preventDefault();
+            grecaptcha.enterprise.ready(async () => {
+            const token = await grecaptcha.enterprise.execute('6LdtXH4qAAAAAOshzSCMkXEn8tWI0J9NHekUXMUb', {action: 'LOGIN'});
+            });
+        }
+    </script> -->
 </body>
+
+
 </html>

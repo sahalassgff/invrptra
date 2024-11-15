@@ -65,6 +65,7 @@
             <div class="bg-white py-2 collapse-inner rounded">
                 <a class="collapse-item text-dark <?=isset($lap_barang_masuk)?'active':'';?>" href="?lap_barang_masuk">Laporan Barang Masuk</a>
                 <a class="collapse-item text-dark <?=isset($lap_barang_keluar)?'active':'';?>" href="?lap_barang_keluar">Laporan Barang Keluar</a>
+                <a class="collapse-item text-dark <?=isset($lap_barang_perkategori)?'active':'';?>" href="views/laporan/lap_barang_perkategori">Laporan Barang Area</a>
                 <a class="collapse-item text-dark <?=isset($lap_stok_barang)?'active':'';?>" href="<?=base_url();?>process/lap_stok_barang.php" target="_blank">Laporan Stok Barang</a>
             </div>
         </div>
