@@ -37,6 +37,10 @@
         $laporan = $lap_barang_keluar = true;
         $views = 'views/laporan/lap_barang_keluar.php';
     }
+    else if(isset($_GET['lap_barang_perkategori'])){
+        $laporan = $lap_barang_keluar = true;
+        $views = 'views/laporan/lap_barang_perkategori.php';
+    }
     else{
         $home = true;
         $views = 'views/home.php';

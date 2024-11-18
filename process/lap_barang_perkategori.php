@@ -68,7 +68,7 @@ include ('../config/function.php');
                 <th>TGL</th>
                 <th>NAMA BARANG</th>
                 <th>MEREK</th>
-                <th>KATEGORI</th>
+                <th>KATEGORI RUANGAN</th>
                 <th>KETERANGAN</th>
                 <th>JUMLAH</th>
             </tr>
