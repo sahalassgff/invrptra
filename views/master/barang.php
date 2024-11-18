@@ -60,7 +60,7 @@ function submit(x) {
                             <th width="20">NO</th>
                             <th>NAMA BARANG</th>
                             <th>MEREK</th>
-                            <th>KATEGORI</th>
+                            <th>KATEGORI RUANGAN</th>
                             <th>KETERANGAN</th>
                             <th>STOK</th>
                             <th width="50">AKSI</th>
@@ -132,7 +132,7 @@ function submit(x) {
                                 <label for="kategori_id">Kategori Barang <span class="text-danger">*</span></label>
                                 <select name="kategori_id" id="kategori_id" class="form-control select2"
                                     style="width:100%;" required>
-                                    <option value="">-- Pilih Kategori --</option>
+                                    <option value="">-- Pilih Kategori Ruangan --</option>
                                     <?= list_kategori(); ?>
                                 </select>
                             </div>
