@@ -46,7 +46,7 @@ $query = mysqli_query($con, "SELECT x.*, x1.nama_barang, x2.nama_merek, x3.nama_
                     <th>TGL</th>
                     <th>NAMA BARANG</th>
                     <th>MEREK</th>
-                    <th>KATEGORI</th>
+                    <th>KATEGORI RUANGAN</th>
                     <th>KETERANGAN</th>
                     <th>JUMLAH</th>
                 </tr>

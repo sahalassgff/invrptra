@@ -33,8 +33,8 @@
                             <th>TANGGAL</th>
                             <th>NAMA BARANG</th>
                             <th>MEREK</th>
-                            <th>KATEGORI</th>
-                            <th>LOKASI PENYIMPANAN</th>
+                            <th>KATEGORI RUANGAN</th>
+                            <th>KETERANGAN</th>
                             <th>JUMLAH</th>
                         </tr>
                     </thead>
