@@ -34,7 +34,7 @@
         <div id="master" class="collapse <?=isset($master)?'show':'';?>" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
                 <a class="collapse-item text-dark <?=isset($merek)?'active':'';?>" href="?merek">Merek</a>
-                <a class="collapse-item text-dark <?=isset($kategori)?'active':'';?>" href="?kategori">Kategori</a>
+                <a class="collapse-item text-dark <?=isset($kategori)?'active':'';?>" href="?kategori">Kategori Ruangan</a>
                 <a class="collapse-item text-dark <?=isset($barang)?'active':'';?>" href="?barang">Barang</a>
                 <a class="collapse-item text-dark <?=isset($pengguna)?'active':'';?>" href="?pengguna">Pengguna</a>
             </div>

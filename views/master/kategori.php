@@ -4,7 +4,7 @@
 
     <!-- Page Heading -->
     <div class="d-sm-flex align-items-center justify-content-between mb-4">
-        <h1 class="h3 mb-0 text-gray-800">Kategori</h1>
+        <h1 class="h3 mb-0 text-gray-800">Kategori Ruangan</h1>
     </div>
 
     <!-- DataTales Example -->
@@ -23,7 +23,7 @@
                     <thead>
                         <tr>
                             <th width="20">NO</th>
-                            <th>NAMA KATEGORI</th>
+                            <th>NAMA KATEGORI RUANGAN</th>
                             <th>KETERANGAN</th>
                             <th width="50">AKSI</th>
                         </tr>
@@ -60,7 +60,7 @@
         <div class="modal-content">
             <form action="<?=base_url();?>process/kategori.php" method="post">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Tambah Kategori</h5>
+                    <h5 class="modal-title" id="exampleModalLabel">Tambah Kategori Ruangan</h5>
                     <button class="close" type="button" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">×</span>
                     </button>
@@ -69,7 +69,7 @@
                     <div class="row">
                         <div class="col-md-12">
                             <div class="form-group">
-                                <label for="nama_kategori">Nama Kategori <span class="text-danger">*</span></label>
+                                <label for="nama_kategori">Nama Kategori Ruangan<span class="text-danger">*</span></label>
                                 <input type="text" class="form-control" id="nama_kategori" name="nama_kategori"
                                     required>
                             </div>
