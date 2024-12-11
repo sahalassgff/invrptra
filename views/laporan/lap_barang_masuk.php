@@ -81,7 +81,7 @@
                                 <th>TANGGAL</th>
                                 <th>NAMA BARANG</th>
                                 <th>MEREK</th>
-                                <th>KATEGORI</th>
+                                <th>KATEGORI RUANGAN</th>
                                 <th>LOKASI PENYIMPANAN</th>
                                 <th>JUMLAH</th>
                             </tr>
