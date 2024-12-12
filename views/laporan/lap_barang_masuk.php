@@ -82,7 +82,7 @@
                                 <th>NAMA BARANG</th>
                                 <th>MEREK</th>
                                 <th>KATEGORI RUANGAN</th>
-                                <th>LOKASI PENYIMPANAN</th>
+                                <th>DETAIL PENYIMPANAN</th>
                                 <th>JUMLAH</th>
                             </tr>
                         </thead>

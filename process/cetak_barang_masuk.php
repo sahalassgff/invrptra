@@ -59,7 +59,7 @@ include ('../config/function.php');
                 <th>NAMA BARANG</th>
                 <th>MEREK</th>
                 <th>KATEGORI RUANGAN</th>
-                <th>KETERANGAN</th>
+                <th>DETAIL PENYIMPANAN</th>
                 <th>JUMLAH</th>
             </tr>
             <?php $n=1; while($row = mysqli_fetch_array($query)): ?>

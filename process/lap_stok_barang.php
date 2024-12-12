@@ -47,7 +47,7 @@ include ('../config/function.php');
                     <th>NAMA BARANG</th>
                     <th>MEREK</th>
                     <th>KATEGORI RUANGAN</th>
-                    <th>KETERANGAN</th>
+                    <th>DETAIL PENYIMPANAN</th>
                     <th>STOK</th>
                 </tr>
             </thead>

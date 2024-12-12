@@ -83,7 +83,7 @@
                             <th>NAMA BARANG</th>
                             <th>MEREK</th>
                             <th>KATEGORI RUANAGAN</th>
-                            <th>KETERANGAN</th>
+                            <th>DETAIL PENYIMPANAN</th>
                             <th>JUMLAH</th>
                         </tr>
                     </thead>
