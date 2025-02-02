@@ -167,6 +167,7 @@ if (isset($_POST['cek_login'])) {
     <div class="card" id="login-card">
         <h1>Selamat Datang</h1>
         <p>Inventaris RPTRA Cibubur Berseri</p>
+        <p>Said Muhammad Sahal Assegaff - 19211030
 
         <!-- Error message display -->
         <?php if (isset($_SESSION['error'])) : ?>

@@ -38,7 +38,7 @@
         <!-- Tabel Laporan Per Ruangan -->
 
         <div class="d-sm-flex align-items-center justify-content-between mb-4">
-            <h1 class="h3 mb-0 text-gray-800">Cetak Laporan Barang Masuk Per Kategori Area</h1>
+            <h1 class="h3 mb-0 text-gray-800">Cetak Laporan Barang Masuk Per Kategori Barang</h1>
         </div>
 
         <div class="card shadow mb-4">
@@ -65,6 +65,37 @@
             </form>
         </div> 
     </div>
+
+    <!-- Tabel Laporan Per Nama Barang -->
+<div class="d-sm-flex align-items-center justify-content-between mb-4">
+    <h1 class="h3 mb-0 text-gray-800">Cetak Laporan Barang Masuk Per Nama Barang</h1>
+</div>
+
+<div class="card shadow mb-4">
+    <div class="card-body">
+        <!-- Form untuk memilih nama barang dan mencetak laporan -->
+        <form action="<?= base_url(); ?>process/cetak_barang_masuk_pernama.php" method="post" target="_blank">
+            <div class="row align-items-center">
+                <!-- Dropdown Nama Barang -->
+                <div class="col-md-5">
+                    <div class="form-group">
+                        <label for="barang_id">Nama Barang</label>
+                        <select name="barang_id" id="barang_id" class="form-control select2" style="width:100%;" required>
+                            <option value="">-- Pilih Nama Barang --</option>
+                            <?= list_barang(); ?>
+                        </select>
+                    </div>
+                </div>
+
+                <!-- Tombol Cetak Laporan -->
+                <div class="col-md-2">
+                    <button type="submit" class="btn btn-info mt-2"><i class="fas fa-print"></i> Cetak Laporan</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
 
     <div class="d-sm-flex align-items-center justify-content-between mb-4">
             <h1 class="h3 mb-0 text-gray-800">Laporan Barang Masuk Seluruh</h1>
