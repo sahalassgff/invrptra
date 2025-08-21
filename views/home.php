@@ -29,7 +29,7 @@
                             <th>NAMA BARANG</th>
                             <th>MEREK</th>
                             <th>KATEGORI</th>
-                            <th>KETERANGAN</th>
+                            <th>DETAIL PENYIMPANAN</th>
                             <th>JUMLAH</th>
                         </tr>
                     </thead>
@@ -77,7 +77,7 @@
                             <th>NAMA BARANG</th>
                             <th>MEREK</th>
                             <th>KATEGORI</th>
-                            <th>KETERANGAN</th>
+                            <th>DETAIL PENYIMPANAN</th>
                             <th>JUMLAH</th>
                         </tr>
                     </thead>

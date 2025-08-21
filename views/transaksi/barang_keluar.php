@@ -34,7 +34,7 @@
                             <th>NAMA BARANG</th>
                             <th>MEREK</th>
                             <th>KATEGORI RUANGAN</th>
-                            <th>LOKASI PENYIMPANAN</th>
+                            <th>DETAIL PENYIMPANAN</th>
                             <th>JUMLAH</th>
                         </tr>
                     </thead>
@@ -102,7 +102,7 @@
                         </div>
                         <div class="col-md-12">
                             <div class="form-group">
-                                <label for="keterangan">Keterangan <span class="text-danger">*</span></label>
+                                <label for="keterangan">Detail Penyimpanan <span class="text-danger">*</span></label>
                                 <textarea name="keterangan" id="keterangan" cols="30" rows="5" class="form-control"
                                     required></textarea>
                             </div>
